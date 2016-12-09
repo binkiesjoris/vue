@@ -24,7 +24,7 @@ export function updateListeners (
       capture = event.charAt(0) === '!'
       event = capture ? event.slice(1) : event
       if (Array.isArray(cur)) {
-        add(event, (cur.invoker = arrInvoker(cur)), once, capture)
+        add(event, (cur.invoker = arrInvoker(cur)), once, capture, vm.$root.$options.nodeOps)
       } else {
         if (!cur.invoker) {
           fn = cur
@@ -32,7 +32,7 @@ export function updateListeners (
           cur.fn = fn
           cur.invoker = fnInvoker(cur)
         }
-        add(event, cur.invoker, once, capture)
+        add(event, cur.invoker, once, capture, vm.$root.$options.nodeOps)
       }
     } else if (cur !== old) {
       if (Array.isArray(old)) {
@@ -51,7 +51,7 @@ export function updateListeners (
       event = once ? name.slice(1) : name
       capture = event.charAt(0) === '!'
       event = capture ? event.slice(1) : event
-      remove(event, oldOn[name].invoker, capture)
+      remove(event, oldOn[name].invoker, capture, vm.$root.$options.nodeOps)
     }
   }
 }

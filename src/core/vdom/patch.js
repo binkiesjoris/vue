@@ -565,7 +565,7 @@ export function createPatchFunction (backend) {
           // mounting to a real element
           // check if this is server-rendered content and if we can perform
           // a successful hydration.
-          if (oldVnode.nodeType === 1 && oldVnode.hasAttribute('server-rendered')) {
+          if (oldVnode.nodeType === 1 && nodeOps.hasAttribute(oldVnode.elm, 'server-rendered')) {
             oldVnode.removeAttribute('server-rendered')
             hydrating = true
           }
