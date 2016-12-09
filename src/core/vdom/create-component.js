@@ -148,7 +148,9 @@ export function createComponentInstanceForVnode (
     options.render = inlineTemplate.render
     options.staticRenderFns = inlineTemplate.staticRenderFns
   }
-  return new vnodeComponentOptions.Ctor(options)
+  var componentInstance = new vnodeComponentOptions.Ctor(options);
+  componentInstance.__patch__ = parent.__patch__;
+  return componentInstance;
 }
 
 function init (

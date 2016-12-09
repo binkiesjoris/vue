@@ -25,9 +25,6 @@ Vue.config.mustUseProp = mustUseProp
 extend(Vue.options.directives, platformDirectives)
 extend(Vue.options.components, platformComponents)
 
-// install platform patch function
-Vue.prototype.__patch__ = inBrowser ? patch : noop
-
 // wrap mount
 Vue.prototype.$mount = function (
   el?: string | Element,
