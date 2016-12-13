@@ -15,7 +15,11 @@ function Vue (options) {
   }
 
   if(options.nodeOps != null)
-     this.__patch__ = createPatchFunction({ nodeOps: options.nodeOps, modules: platformModules.concat(baseModules) });
+  {
+    this.__patch__ = createPatchFunction({ nodeOps: options.nodeOps, modules: platformModules.concat(baseModules) });
+    config.isReservedTag = nodeOps.isReservedTag;
+    config.isUnknownElement = nodeOps.isUnknownElement;
+  }
   this._init(options)
 }
 
