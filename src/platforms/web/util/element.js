@@ -2,6 +2,7 @@
 
 import { inBrowser } from 'core/util/env'
 import { makeMap } from 'shared/util'
+import config from '../config'
 
 export const namespaceMap = {
   svg: 'http://www.w3.org/2000/svg',
@@ -55,7 +56,7 @@ export function isUnknownElement (tag: string): boolean {
   if (!inBrowser) {
     return true
   }
-  if (isReservedTag(tag)) {
+  if (config.isReservedTag(tag)) {
     return false
   }
   tag = tag.toLowerCase()
